@@ -11,8 +11,7 @@ variable "project" {
 }
 
 variable "location" {
-  type    = string
-  default = "europe-west4"
+  type = string
 }
 
 variable "disable_kms_api_on_destroy" {
