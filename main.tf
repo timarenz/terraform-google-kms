@@ -25,7 +25,7 @@ resource "google_kms_key_ring" "main" {
   depends_on = [google_project_service.main]
   project    = var.project
   name       = "${var.environment_name}-${var.name}-${random_string.kms_key_ring.result}"
-  location   = var.location
+  location   = var.region
 }
 
 resource "google_kms_crypto_key" "main" {

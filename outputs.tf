@@ -35,5 +35,5 @@ output "google_credentials_file" {
 }
 
 output "region" {
-  value = var.location
+  value = var.region
 }
