@@ -5,8 +5,8 @@ resource "google_project_service" "main" {
 }
 
 resource "google_service_account" "main" {
-  account_id   = "${var.environment_name}-${var.name}"
-  display_name = "${var.environment_name}-${var.name}"
+  account_id   = "${var.name}"
+  display_name = "${var.name}"
   project      = var.project
 }
 
@@ -24,12 +24,12 @@ resource "random_string" "kms_key_ring" {
 resource "google_kms_key_ring" "main" {
   depends_on = [google_project_service.main]
   project    = var.project
-  name       = "${var.environment_name}-${var.name}-${random_string.kms_key_ring.result}"
+  name       = "${var.name}-${random_string.kms_key_ring.result}"
   location   = var.region
 }
 
 resource "google_kms_crypto_key" "main" {
-  name            = "${var.environment_name}-${var.name}"
+  name            = "${var.name}"
   key_ring        = google_kms_key_ring.main.self_link
   rotation_period = "100000s"
 }
