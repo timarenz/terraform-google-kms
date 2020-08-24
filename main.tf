@@ -12,7 +12,7 @@ resource "google_kms_key_ring" "main" {
 }
 
 resource "google_kms_crypto_key" "main" {
-  name            = "${var.name}"
+  name            = var.name
   key_ring        = google_kms_key_ring.main.self_link
   rotation_period = "100000s"
 }
